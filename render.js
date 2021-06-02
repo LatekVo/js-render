@@ -74,8 +74,8 @@ function main() {
 		// rX, rY and rZ are not coords, but chunks of the matrix im allowed to precompute
 		points[i][0] = (origins[i][0] * rX0) + (origins[i][1] * rX1) + (origins[i][2] * rX2);
 		points[i][1] = (origins[i][0] * rY0) + (origins[i][1] * rY1) + (origins[i][2] * rY2);
-		points[i][2] = (origins[i][0] * rZ0) + (origins[i][1] * rZ1) + (origins[i][2] * rZ2) + 200;
-		let f = 80;
+		points[i][2] = (origins[i][0] * rZ0) + (origins[i][1] * rZ1) + (origins[i][2] * rZ2) + 400;
+		let f = 300;
 		points[i][0] = points[i][0] * (f / points[i][2]) + center[0];
 		points[i][1] = points[i][1] * (f / points[i][2]) + center[1];
 	}
