@@ -33,9 +33,14 @@ var points = [ // holds calculated results, single record will be read multiple 
 
 var ctx = document.getElementById("mainCanvas").getContext("2d");
 var center = [200, 200, 200];
+
 //   yaw,    pitch,     roll
 var rotA = 0, rotB = 0, rotC = 0;
-do {
+
+main();
+
+function main() {
+
 	var tStart = performance.now();
 
 	// correction
@@ -75,6 +80,7 @@ do {
 	// drawing
 	ctx.clearRect(0, 0, 400, 400);
 	ctx.beginPath();	
+
 	for (let i = 0; i < points.length; i++) {
 		for (let target = 1; target <= 4; target++) {
 			if (i + target >= points.length) {
@@ -86,14 +92,17 @@ do {
 		}
 	}
 
-
 	// rotations
 	rotA += 0.5;
 	rotB += 1;
 	rotC += 2;
+   
+	// this little loop causes unncecesary resource usage, but roughly normalizes the fps
+	// across multiple devices, i couldn't bother with a better way to do this
 	do {
-		var tEnd = performance.now();
+        var tEnd = performance.now();
+    } while (tEnd - tStart < 40);
+	
+	setTimeout(main, 10);
 
-	} while (tEnd - tStart < 25);
-} while (1);
-
+}
